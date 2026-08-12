@@ -1,0 +1,76 @@
+
+=== Tool Planner Tests ===
+
+----------------------------
+INTENT: analyze_company
+TICKERS: ['NVDA']
+EXPECTED PLAN: ['rag', 'market_data', 'financial_ratios']
+PREDICTED PLAN: ['rag', 'market_data', 'financial_ratios']
+TRACE: ['Tool plan: rag, market_data, financial_ratios']
+✅ Passed
+
+----------------------------
+INTENT: metric_lookup
+TICKERS: ['NVDA']
+EXPECTED PLAN: ['market_data', 'financial_ratios']
+PREDICTED PLAN: ['market_data', 'financial_ratios']
+TRACE: ['Tool plan: market_data, financial_ratios']
+✅ Passed
+
+----------------------------
+INTENT: compare_companies
+TICKERS: ['NVDA', 'MSFT']
+EXPECTED PLAN: ['comparison', 'rag']
+PREDICTED PLAN: ['comparison', 'rag']
+TRACE: ['Tool plan: comparison, rag']
+✅ Passed
+
+----------------------------
+INTENT: generate_memo
+TICKERS: ['NVDA']
+EXPECTED PLAN: ['rag', 'market_data', 'financial_ratios', 'case']
+PREDICTED PLAN: ['rag', 'market_data', 'financial_ratios', 'case']
+TRACE: ['Tool plan: rag, market_data, financial_ratios, case']
+✅ Passed
+
+----------------------------
+INTENT: review_pending_memo
+TICKERS: []
+EXPECTED PLAN: ['case']
+PREDICTED PLAN: ['case']
+TRACE: ['Tool plan: case']
+✅ Passed
+
+----------------------------
+INTENT: approve_reject
+TICKERS: []
+EXPECTED PLAN: ['case']
+PREDICTED PLAN: ['case']
+TRACE: ['Tool plan: case']
+✅ Passed
+
+----------------------------
+INTENT: ask_followup
+TICKERS: ['NVDA']
+EXPECTED PLAN: ['rag', 'market_data', 'financial_ratios']
+PREDICTED PLAN: ['rag', 'market_data', 'financial_ratios']
+TRACE: ['Tool plan: rag, market_data, financial_ratios']
+✅ Passed
+
+----------------------------
+INTENT: ask_followup
+TICKERS: []
+EXPECTED PLAN: ['rag']
+PREDICTED PLAN: ['rag']
+TRACE: ['Tool plan: rag']
+✅ Passed
+
+----------------------------
+INTENT: out_of_scope
+TICKERS: []
+EXPECTED PLAN: []
+PREDICTED PLAN: []
+TRACE: ['Tool plan: none']
+✅ Passed
+
+🎉 Tool planner tests completed

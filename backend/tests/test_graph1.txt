@@ -1,0 +1,111 @@
+
+=== Phase 1 LangGraph Tests ===
+
+----------------------------
+ROLE: analyst
+QUERY: Analyze NVIDIA business performance
+EXPECTED INTENT: analyze_company
+PREDICTED INTENT: analyze_company
+EXPECTED TICKERS: ['NVDA']
+PREDICTED TICKERS: ['NVDA']
+TRACE: ['Routing as analyst', 'Classified intent: analyze_company', 'Resolved tickers: NVDA', 'Unavailable companies: none']
+PASSED
+
+----------------------------
+ROLE: analyst
+QUERY: Compare NVIDIA and Apple as investment opportunities
+EXPECTED INTENT: compare_companies
+PREDICTED INTENT: compare_companies
+EXPECTED TICKERS: ['NVDA', 'AAPL']
+PREDICTED TICKERS: ['NVDA', 'AAPL']
+TRACE: ['Routing as analyst', 'Classified intent: compare_companies', 'Resolved tickers: NVDA, AAPL', 'Unavailable companies: none']
+PASSED
+
+----------------------------
+ROLE: analyst
+QUERY: What is Microsoft's P/E ratio?
+EXPECTED INTENT: metric_lookup
+PREDICTED INTENT: metric_lookup
+EXPECTED TICKERS: ['MSFT']
+PREDICTED TICKERS: ['MSFT']
+TRACE: ['Routing as analyst', 'Classified intent: metric_lookup', 'Resolved tickers: MSFT', 'Unavailable companies: none']
+PASSED
+
+----------------------------
+ROLE: analyst
+QUERY: Create an investment memo for NVIDIA
+EXPECTED INTENT: generate_memo
+PREDICTED INTENT: generate_memo
+EXPECTED TICKERS: ['NVDA']
+PREDICTED TICKERS: ['NVDA']
+TRACE: ['Routing as analyst', 'Classified intent: generate_memo', 'Resolved tickers: NVDA', 'Unavailable companies: none']
+PASSED
+
+----------------------------
+ROLE: manager
+QUERY: Review the pending NVIDIA investment memo
+EXPECTED INTENT: review_pending_memo
+PREDICTED INTENT: review_pending_memo
+EXPECTED TICKERS: ['NVDA']
+PREDICTED TICKERS: ['NVDA']
+TRACE: ['Routing as manager', 'Classified intent: review_pending_memo', 'Resolved tickers: NVDA', 'Unavailable companies: none']
+PASSED
+
+----------------------------
+ROLE: manager
+QUERY: Approve the NVIDIA investment recommendation
+EXPECTED INTENT: approve_reject
+PREDICTED INTENT: approve_reject
+EXPECTED TICKERS: ['NVDA']
+PREDICTED TICKERS: ['NVDA']
+TRACE: ['Routing as manager', 'Classified intent: approve_reject', 'Resolved tickers: NVDA', 'Unavailable companies: none']
+PASSED
+
+----------------------------
+ROLE: analyst
+QUERY: Tell me a joke
+EXPECTED INTENT: out_of_scope
+PREDICTED INTENT: out_of_scope
+EXPECTED TICKERS: []
+PREDICTED TICKERS: []
+TRACE: ['Routing as analyst', 'Classified intent: out_of_scope', 'Out-of-scope request handled']
+FALLBACK: I’m unable to assist with questions outside the supported investment research workflows.
+PASSED
+
+----------------------------
+ROLE: manager
+QUERY: Help me plan my vacation
+EXPECTED INTENT: out_of_scope
+PREDICTED INTENT: out_of_scope
+EXPECTED TICKERS: []
+PREDICTED TICKERS: []
+TRACE: ['Routing as manager', 'Classified intent: out_of_scope', 'Out-of-scope request handled']
+FALLBACK: I’m unable to assist with questions outside the supported investment research workflows.
+PASSED
+
+=== Graph State Preservation Test ===
+
+Final state:
+{'role': 'analyst', 'message': 'Analyze NVIDIA business performance and risks', 'session_history': [], 'case_id': None, 'author': 'Test User', 'intent': 'analyze_company', 'tickers': ['NVDA'], 'unavailable_companies': [], 'memory_hit': False, 'memory_answer': None, 'tool_results': {}, 'final_output': None, 'trace_steps': ['Routing as analyst', 'Classified intent: analyze_company', 'Resolved tickers: NVDA', 'Unavailable companies: none']}
+
+Checking required fields...
+✓ role
+✓ message
+✓ intent
+✓ tickers
+✓ memory_hit
+✓ memory_answer
+✓ tool_results
+✓ final_output
+✓ trace_steps
+
+✅ State preservation passed
+
+=== Graph Out-of-Scope Test ===
+
+Intent: out_of_scope
+Fallback: I’m unable to assist with questions outside the supported investment research workflows.
+Trace: ['Routing as analyst', 'Classified intent: out_of_scope', 'Out-of-scope request handled']
+✅ Out-of-scope routing passed
+
+🎉 Phase 1 LangGraph tests completed

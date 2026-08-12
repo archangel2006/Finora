@@ -1,0 +1,124 @@
+
+=== Multi-Intent Classifier Tests ===
+
+----------------------------
+ROLE: analyst
+QUERY: Analyze NVIDIA and give me its P/E ratio
+EXPECTED: ['analyze_company', 'metric_lookup']
+PREDICTED: ['analyze_company', 'metric_lookup']
+TRACE: ['Classified intents: analyze_company, metric_lookup']
+PASSED
+
+----------------------------
+ROLE: analyst
+QUERY: Compare NVIDIA and Apple and show their revenue growth
+EXPECTED: ['compare_companies', 'metric_lookup']
+PREDICTED: ['compare_companies', 'metric_lookup']
+TRACE: ['Classified intents: compare_companies, metric_lookup']
+PASSED
+
+----------------------------
+ROLE: analyst
+QUERY: Analyze NVIDIA's risks and financial metrics
+EXPECTED: ['analyze_company', 'metric_lookup']
+PREDICTED: ['analyze_company', 'metric_lookup']
+TRACE: ['Classified intents: analyze_company, metric_lookup']
+PASSED
+
+----------------------------
+ROLE: analyst
+QUERY: Compare NVIDIA and Apple and analyze their growth strategies
+EXPECTED: ['compare_companies', 'analyze_company']
+PREDICTED: ['compare_companies', 'analyze_company']
+TRACE: ['Classified intents: compare_companies, analyze_company']
+PASSED
+
+----------------------------
+ROLE: analyst
+QUERY: Compare NVIDIA and Microsoft, then create an investment memo
+EXPECTED: ['compare_companies', 'generate_memo']
+PREDICTED: ['compare_companies', 'generate_memo']
+TRACE: ['Classified intents: compare_companies, generate_memo']
+PASSED
+
+----------------------------
+ROLE: analyst
+QUERY: Analyze NVIDIA, compare it with Apple, and create an investment memo
+EXPECTED: ['analyze_company', 'compare_companies', 'generate_memo']
+PREDICTED: ['analyze_company', 'compare_companies', 'generate_memo']
+TRACE: ['Classified intents: analyze_company, compare_companies, generate_memo']
+PASSED
+
+----------------------------
+ROLE: analyst
+QUERY: Analyze NVIDIA, show its P/E ratio, and create an investment memo
+EXPECTED: ['analyze_company', 'metric_lookup', 'generate_memo']
+PREDICTED: ['analyze_company', 'metric_lookup', 'generate_memo']
+TRACE: ['Classified intents: analyze_company, metric_lookup, generate_memo']
+PASSED
+
+----------------------------
+ROLE: analyst
+QUERY: Analyze NVIDIA business performance
+EXPECTED: ['analyze_company']
+PREDICTED: ['analyze_company']
+TRACE: ['Classified intents: analyze_company']
+PASSED
+
+----------------------------
+ROLE: analyst
+QUERY: What is Microsoft's P/E ratio?
+EXPECTED: ['metric_lookup']
+PREDICTED: ['metric_lookup']
+TRACE: ['Classified intents: metric_lookup']
+PASSED
+
+----------------------------
+ROLE: analyst
+QUERY: Create an investment memo for NVIDIA
+EXPECTED: ['generate_memo']
+PREDICTED: ['generate_memo']
+TRACE: ['Classified intents: generate_memo']
+PASSED
+
+----------------------------
+ROLE: analyst
+QUERY: Tell me about NVIDIA and tell me a joke
+EXPECTED: ['analyze_company', 'out_of_scope']
+PREDICTED: ['analyze_company', 'out_of_scope']
+TRACE: ['Classified intents: analyze_company, out_of_scope']
+PASSED
+
+----------------------------
+ROLE: analyst
+QUERY: Compare NVIDIA and Apple, then help me plan my vacation
+EXPECTED: ['compare_companies', 'out_of_scope']
+PREDICTED: ['compare_companies', 'out_of_scope']
+TRACE: ['Classified intents: compare_companies, out_of_scope']
+PASSED
+
+----------------------------
+ROLE: manager
+QUERY: Review the NVIDIA memo and tell me whether it should be approved
+EXPECTED: ['review_pending_memo', 'approve_reject']
+PREDICTED: ['review_pending_memo', 'approve_reject']
+TRACE: ['Classified intents: review_pending_memo, approve_reject']
+PASSED
+
+----------------------------
+ROLE: manager
+QUERY: Review the Apple memo and answer my follow-up questions
+EXPECTED: ['review_pending_memo', 'ask_followup']
+PREDICTED: ['review_pending_memo', 'ask_followup']
+TRACE: ['Classified intents: review_pending_memo, ask_followup']
+PASSED
+
+----------------------------
+ROLE: manager
+QUERY: Review the NVIDIA memo and explain quantum physics
+EXPECTED: ['review_pending_memo', 'out_of_scope']
+PREDICTED: ['review_pending_memo', 'out_of_scope']
+TRACE: ['Classified intents: review_pending_memo, out_of_scope']
+PASSED
+
+🎉 Multi-intent classifier tests completed

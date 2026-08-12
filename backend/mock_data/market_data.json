@@ -1,0 +1,5 @@
+{
+  "NVDA": {"price": 141.22, "marketCap": 3470000000000, "trailingPE": 64.2, "fiftyTwoWeekHigh": 152.89, "fiftyTwoWeekLow": 86.62, "dividendYield": null, "volume": 210450000, "eps": 2.94, "roe": 0.915, "debtToEquity": 17.2, "revenueGrowth": 1.14, "grossMargin": 0.75, "asOf": "2026-08-07T16:00:00Z"},
+  "MSFT": {"price": 512.30, "marketCap": 3810000000000, "trailingPE": 38.1, "fiftyTwoWeekHigh": 530.10, "fiftyTwoWeekLow": 385.20, "dividendYield": 0.68, "volume": 22100000, "eps": 12.22, "roe": 0.352, "debtToEquity": 41.8, "revenueGrowth": 0.09, "grossMargin": 0.677, "asOf": "2026-08-07T16:00:00Z"},
+  "AAPL": {"price": 228.40, "marketCap": 3450000000000, "trailingPE": 32.4, "fiftyTwoWeekHigh": 245.10, "fiftyTwoWeekLow": 165.30, "dividendYield": 0.44, "volume": 48900000, "eps": 6.71, "roe": 1.462, "debtToEquity": 154.3, "revenueGrowth": 0.03, "grossMargin": 0.457, "asOf": "2026-08-07T16:00:00Z"}
+}

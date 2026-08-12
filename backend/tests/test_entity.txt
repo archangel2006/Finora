@@ -1,0 +1,88 @@
+
+=== Entity Extractor Tests ===
+
+----------------------------
+QUERY: Analyze NVIDIA business performance
+EXPECTED TICKERS: ['NVDA']
+PREDICTED TICKERS: ['NVDA']
+UNAVAILABLE: []
+✅ Passed
+
+----------------------------
+QUERY: Compare NVIDIA and AMD as investment opportunities
+EXPECTED TICKERS: ['NVDA']
+PREDICTED TICKERS: ['NVDA']
+UNAVAILABLE: ['AMD']
+✅ Passed
+
+----------------------------
+QUERY: Compare Apple against Microsoft
+EXPECTED TICKERS: ['AAPL', 'MSFT']
+PREDICTED TICKERS: ['AAPL', 'MSFT']
+UNAVAILABLE: []
+✅ Passed
+
+----------------------------
+QUERY: What are Microsoft's AI risks?
+EXPECTED TICKERS: ['MSFT']
+PREDICTED TICKERS: ['MSFT']
+UNAVAILABLE: []
+✅ Passed
+
+----------------------------
+QUERY: Give me Apple's financial metrics
+EXPECTED TICKERS: ['AAPL']
+PREDICTED TICKERS: ['AAPL']
+UNAVAILABLE: []
+✅ Passed
+
+----------------------------
+QUERY: Analyze nvda and aapl
+EXPECTED TICKERS: ['NVDA', 'AAPL']
+PREDICTED TICKERS: ['NVDA', 'AAPL']
+UNAVAILABLE: []
+✅ Passed
+
+----------------------------
+QUERY: How is Nvidia Corporation performing?
+EXPECTED TICKERS: ['NVDA']
+PREDICTED TICKERS: ['NVDA']
+UNAVAILABLE: []
+✅ Passed
+
+----------------------------
+QUERY: Tell me about Microsoft Corp growth
+EXPECTED TICKERS: ['MSFT']
+PREDICTED TICKERS: ['MSFT']
+UNAVAILABLE: []
+✅ Passed
+
+----------------------------
+QUERY: Apple Inc revenue trends
+EXPECTED TICKERS: ['AAPL']
+PREDICTED TICKERS: ['AAPL']
+UNAVAILABLE: []
+✅ Passed
+
+----------------------------
+QUERY: Analyze Nvida business outlook
+EXPECTED TICKERS: ['NVDA']
+PREDICTED TICKERS: ['NVDA']
+UNAVAILABLE: []
+✅ Passed
+
+----------------------------
+QUERY: Compare Microsof and Apple
+EXPECTED TICKERS: ['MSFT', 'AAPL']
+PREDICTED TICKERS: ['MSFT', 'AAPL']
+UNAVAILABLE: []
+✅ Passed
+
+----------------------------
+QUERY: What are Appl's biggest risks?
+EXPECTED TICKERS: ['AAPL']
+PREDICTED TICKERS: ['AAPL']
+UNAVAILABLE: []
+✅ Passed
+
+🎉 Entity extractor tests completed

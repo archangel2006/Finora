@@ -1,0 +1,23 @@
+
+=== AgentState Test ===
+
+STATE CREATED:
+{'role': 'analyst', 'message': 'Analyze NVIDIA', 'session_history': [], 'case_id': None, 'author': 'Test User', 'intent': None, 'tickers': [], 'memory_hit': False, 'memory_answer': None, 'tool_results': {}, 'final_output': None, 'trace_steps': []}
+
+Checking required fields...
+✓ role
+✓ message
+✓ session_history
+✓ case_id
+✓ author
+✓ intent
+✓ tickers
+✓ memory_hit
+✓ memory_answer
+✓ tool_results
+✓ final_output
+✓ trace_steps
+
+Checking values...
+
+✅ AgentState passed

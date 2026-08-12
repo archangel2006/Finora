@@ -1,0 +1,16 @@
+
+=== Role Router Tests ===
+
+Analyst intents:
+['analyze_company', 'compare_companies', 'metric_lookup', 'generate_memo', 'out_of_scope']
+
+Manager intents:
+['review_pending_memo', 'ask_followup', 'approve_reject', 'out_of_scope']
+
+Testing invalid role...
+Expected error: Unknown role: unknown
+
+Trace:
+['Routing as analyst']
+
+✅ Role router passed

@@ -1,0 +1,116 @@
+
+=== Intent Classifier Tests ===
+
+----------------------------
+ROLE: analyst
+QUERY: Analyze NVIDIA business performance, growth strategy, and risks
+EXPECTED: analyze_company
+PREDICTED: analyze_company
+TRACE: ['Classified intent: analyze_company']
+✅ Passed
+
+----------------------------
+ROLE: analyst
+QUERY: Give me a deep dive into Microsoft's AI strategy
+EXPECTED: analyze_company
+PREDICTED: analyze_company
+TRACE: ['Classified intent: analyze_company']
+✅ Passed
+
+----------------------------
+ROLE: analyst
+QUERY: Compare NVIDIA versus AMD as investment opportunities
+EXPECTED: compare_companies
+PREDICTED: compare_companies
+TRACE: ['Classified intent: compare_companies']
+✅ Passed
+
+----------------------------
+ROLE: analyst
+QUERY: Should I invest in NVIDIA or Apple?
+EXPECTED: compare_companies
+PREDICTED: compare_companies
+TRACE: ['Classified intent: compare_companies']
+✅ Passed
+
+----------------------------
+ROLE: analyst
+QUERY: What is NVIDIA's P/E ratio and revenue growth?
+EXPECTED: metric_lookup
+PREDICTED: metric_lookup
+TRACE: ['Classified intent: metric_lookup']
+✅ Passed
+
+----------------------------
+ROLE: analyst
+QUERY: Find Apple's latest financial metrics
+EXPECTED: metric_lookup
+PREDICTED: metric_lookup
+TRACE: ['Classified intent: metric_lookup']
+✅ Passed
+
+----------------------------
+ROLE: analyst
+QUERY: Create an investment memo for NVIDIA
+EXPECTED: generate_memo
+PREDICTED: generate_memo
+TRACE: ['Classified intent: generate_memo']
+✅ Passed
+
+----------------------------
+ROLE: analyst
+QUERY: Draft an investment case for Microsoft
+EXPECTED: generate_memo
+PREDICTED: generate_memo
+TRACE: ['Classified intent: generate_memo']
+✅ Passed
+
+----------------------------
+ROLE: manager
+QUERY: Review the pending NVIDIA investment memo
+EXPECTED: review_pending_memo
+PREDICTED: review_pending_memo
+TRACE: ['Classified intent: review_pending_memo']
+✅ Passed
+
+----------------------------
+ROLE: manager
+QUERY: I want to ask questions about the submitted Apple analysis
+EXPECTED: ask_followup
+PREDICTED: ask_followup
+TRACE: ['Classified intent: ask_followup']
+✅ Passed
+
+----------------------------
+ROLE: manager
+QUERY: Approve the NVIDIA investment recommendation
+EXPECTED: approve_reject
+PREDICTED: approve_reject
+TRACE: ['Classified intent: approve_reject']
+✅ Passed
+
+----------------------------
+ROLE: analyst
+QUERY: Tell me a joke
+EXPECTED: out_of_scope
+PREDICTED: out_of_scope
+TRACE: ['Classified intent: out_of_scope']
+✅ Passed
+
+----------------------------
+ROLE: analyst
+QUERY: Help me write a vacation plan
+EXPECTED: out_of_scope
+PREDICTED: out_of_scope
+TRACE: ['Classified intent: out_of_scope']
+✅ Passed
+
+----------------------------
+ROLE: manager
+QUERY: Explain quantum physics
+EXPECTED: out_of_scope
+PREDICTED: out_of_scope
+TRACE: ['Classified intent: out_of_scope']
+✅ Passed
+
+🎉 Intent classifier tests completed

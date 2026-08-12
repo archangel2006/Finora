@@ -1,0 +1,26 @@
+
+=== Review Package Tests ===
+
+Creating review package...
+Package created:
+{'memo': {'ticker': 'NVDA', 'company': 'NVIDIA Corporation', 'thesis': 'Long-Term Buy', 'confidence': 82, 'summary': 'NVIDIA remains the dominant supplier of AI training and inference infrastructure.', 'citations': ['NVDA 10-K Annual Report, Item 1. Business Overview', 'NVDA 10-K Annual Report, Item 1A. Risk Factors', 'Calculated Ratios']}, 'analyst': {'author': 'Priya Shah'}, 'review': {'status': 'pending', 'manager': None, 'decision': None, 'comments': None}, 'session_id': 'session-123'}
+✓ Memo included
+✓ Analyst included
+✓ Review status initialized
+✓ Raw chat excluded
+✓ Original question excluded
+✓ Agent trace excluded
+
+Testing manager approval...
+✓ Approval recorded
+
+Testing revision request...
+✓ Revision request recorded
+
+Testing rejection...
+✓ Rejection recorded
+
+Testing invalid decision...
+✓ Expected error: Invalid review decision: maybe
+
+🎉 Review package tests passed

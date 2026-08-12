@@ -1,0 +1,125 @@
+
+=== RAG (search_docs) ===
+
+QUERY: What did NVIDIA say about China export restrictions?
+COMPANY FILTER: NVDA
+DOC TYPE FILTER: None
+Loading FAISS index from: ./data/faiss_index
+FAISS loaded successfully
+Fetching: 20 documents
+FAISS returned: 20
+FOUND: NVDA | 10-K Annual Report | score: 0.87494814
+  ✅ kept
+FOUND: NVDA | Earnings Call Transcript | score: 0.9378685
+  ✅ kept
+FINAL RESULTS: 2
+  [NVDA 10-K Annual Report, Item 1A. Risk Factors] score=0.875 :: The Company's business is subject to a number of risks, the most significant of which are summarized...
+  [NVDA Earnings Call Transcript, Analyst, Brightwater Securities] score=0.938 :: What is the current contribution of China to data center revenue following export restrictions?
+Resp...
+✅ RAG passed
+
+=== RAG additional cases ===
+
+QUERY: What was NVIDIA's revenue last year?
+COMPANY FILTER: NVDA
+DOC TYPE FILTER: None
+Fetching: 30 documents
+FAISS returned: 30
+FOUND: NVDA | 10-K Annual Report | score: 0.8645002
+  ✅ kept
+FOUND: NVDA | 10-Q Quarterly Report | score: 1.013057
+  ✅ kept
+FOUND: NVDA | 10-K Annual Report | score: 1.0307852
+  ✅ kept
+FINAL RESULTS: 3
+Q: What was NVIDIA's revenue last year? [NVDA] -> 3 results
+
+QUERY: How is Azure AI revenue growing?
+COMPANY FILTER: MSFT
+DOC TYPE FILTER: None
+Fetching: 30 documents
+FAISS returned: 30
+FOUND: MSFT | 10-K Annual Report | score: 0.43229696
+  ✅ kept
+FOUND: MSFT | Earnings Call Transcript | score: 0.4739143
+  ✅ kept
+FOUND: MSFT | Earnings Call Transcript | score: 0.5734426
+  ✅ kept
+FINAL RESULTS: 3
+Q: How is Azure AI revenue growing? [MSFT] -> 3 results
+
+QUERY: What are Apple's main risk factors?
+COMPANY FILTER: AAPL
+DOC TYPE FILTER: None
+Fetching: 30 documents
+FAISS returned: 30
+FOUND: AAPL | 10-K Annual Report | score: 0.9447116
+  ✅ kept
+FOUND: AAPL | 10-K Annual Report | score: 0.9521293
+  ✅ kept
+FOUND: AAPL | Earnings Call Transcript | score: 0.9578499
+  ✅ kept
+FINAL RESULTS: 3
+Q: What are Apple's main risk factors? [AAPL] -> 3 results
+
+QUERY: Compare gross margin trends across companies
+COMPANY FILTER: None
+DOC TYPE FILTER: None
+Fetching: 3 documents
+FAISS returned: 3
+FOUND: NVDA | Earnings Call Transcript | score: 0.98716676
+  ✅ kept
+FOUND: MSFT | Earnings Call Transcript | score: 0.9945018
+  ✅ kept
+FOUND: AAPL | Earnings Call Transcript | score: 1.037303
+  ✅ kept
+FINAL RESULTS: 3
+Q: Compare gross margin trends across companies [None] -> 3 results
+✅ Additional RAG cases passed
+
+=== Market data + ratios (mocked) ===
+  NVDA: $141.22
+  MSFT: $512.3
+  AAPL: $228.4
+  NVDA ratios: {'pe_ratio': 64.2, 'eps': 2.94, 'roe': 0.915, 'debt_to_equity': 17.2, 'revenue_growth': 1.14, 'gross_margin': 0.75}
+✅ Market + ratios passed
+
+=== compare_companies ===
+  {'metric': 'P/E (TTM)', 'nvda': '64.2x', 'msft': '38.1x', 'aapl': '32.4x'}
+  {'metric': 'Revenue Growth', 'nvda': '114.0%', 'msft': '9.0%', 'aapl': '3.0%'}
+  {'metric': 'Gross Margin', 'nvda': '75.0%', 'msft': '67.7%', 'aapl': '45.7%'}
+  {'metric': 'ROE', 'nvda': '91.5%', 'msft': '35.2%', 'aapl': '146.2%'}
+✅ Comparison passed
+
+=== Case store ===
+  Loaded: NVIDIA Corporation — Long-Term Buy
+✅ Case store passed
+
+=== Memo generation (requires ANTHROPIC_API_KEY) ===
+
+QUERY: NVIDIA Corporation business overview risks strategy outlook
+COMPANY FILTER: NVDA
+DOC TYPE FILTER: None
+Fetching: 60 documents
+FAISS returned: 60
+FOUND: NVDA | 10-K Annual Report | score: 0.8612424
+  ✅ kept
+FOUND: NVDA | 10-K Annual Report | score: 0.93750453
+  ✅ kept
+FOUND: NVDA | 10-K Annual Report | score: 1.1143422
+  ✅ kept
+FOUND: NVDA | 10-Q Quarterly Report | score: 1.1687393
+  ✅ kept
+FOUND: AAPL | 10-K Annual Report | score: 1.1704886
+  ❌ removed by company filter
+FOUND: NVDA | 10-Q Quarterly Report | score: 1.2185547
+  ✅ kept
+FOUND: NVDA | 10-K Annual Report | score: 1.22833
+  ✅ kept
+FINAL RESULTS: 6
+  Thesis: Long-Term Buy (confidence 74)
+  Summary: NVIDIA Corporation (NVDA) delivered total quarterly revenue of $44.1 billion, up 69% year-over-year, with data center revenue of $39.1 billion growing 73% year-over-year, reflecting sustained hyperscaler demand for AI training and inference infrastructure. Gross margin remained near 75% on a non-GAAP basis, and management guided next-quarter revenue to approximately $45 billion, signaling continued near-term momentum. NVIDIA's CUDA software ecosystem represents a significant and durable competitive moat, creating high switching costs for customers with existing AI workloads. However, the investment case carries meaningful risks, including customer concentration, U.S. export control headwinds in China, and the long-term threat of custom silicon development by large cloud customers....
+  Citations: ['NVDA 10-K Annual Report, Item 1. Business Overview', 'NVDA 10-K Annual Report, Item 1A. Risk Factors', 'NVDA 10-K Annual Report, Competitive Landscape', "NVDA 10-K Annual Report, Item 7. Management's Discussion and Analysis", 'NVDA 10-Q Quarterly Report, Quarter Highlights', 'NVDA 10-Q Quarterly Report, Revenue and Guidance', 'Live Market Data (as of 2026-08-07)', 'Calculated Ratios']
+✅ Memo generation passed
+
+🎉 Pipeline check complete.
