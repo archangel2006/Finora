@@ -43,6 +43,8 @@ Role is checked before intent classification runs. A manager-only action is neve
 
 ## Architecture
 
+
+
 ```mermaid
 flowchart TB
     subgraph Client[Client Layer]
