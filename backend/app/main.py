@@ -18,7 +18,17 @@ app.add_middleware(
 app.include_router(routes_chat.router, prefix="/chat", tags=["chat"])
 
 
-# route: simple health check for uptime monitoring ------------------------
+# route: root welcome & health check for uptime monitoring ------------------------
+@app.get("/")
+def root():
+    return {
+        "status": "ok",
+        "message": "Finora Investment Copilot API is running",
+        "docs": "/docs",
+        "health": "/health"
+    }
+
+
 @app.get("/health")
 def health():
     return {"status": "ok"}
