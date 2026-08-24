@@ -1,4 +1,5 @@
 import logging
+from pathlib import Path
 
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -15,6 +16,11 @@ def _get_store():
     global _store
 
     if _store is None:
+        index_path = Path(settings.vector_store_path)
+        if not index_path.exists():
+            logger.warning("FAISS vector store directory not found at %s", index_path)
+            return None
+
         logger.debug(
             "Loading FAISS index from: %s",
             settings.vector_store_path,
@@ -24,13 +30,16 @@ def _get_store():
             model_name="all-MiniLM-L6-v2"
         )
 
-        _store = FAISS.load_local(
-            settings.vector_store_path,
-            embeddings,
-            allow_dangerous_deserialization=True,
-        )
-
-        logger.debug("FAISS index loaded successfully")
+        try:
+            _store = FAISS.load_local(
+                settings.vector_store_path,
+                embeddings,
+                allow_dangerous_deserialization=True,
+            )
+            logger.debug("FAISS index loaded successfully")
+        except Exception as e:
+            logger.error("Failed to load FAISS index: %s", e)
+            return None
 
     return _store
 
@@ -42,6 +51,9 @@ def retrieve(
     top_k: int = 4,
 ) -> list[dict]:
     store = _get_store()
+    if not store:
+        logger.warning("No vector store loaded. Returning empty retrieval results.")
+        return []
 
     fetch_k = top_k * 10 if (company or doc_type) else top_k
     fetch_k = min(fetch_k, 100)
