@@ -28,6 +28,8 @@ class Settings(BaseSettings):
     anthropic_api_key: str = ""
     anthropic_base_url: str = ""
 
+    gemini_api_key: str = ""
+
     # RAG paths
     documents_path: str = str(APP_DIR / "rag" / "documents")
     vector_store_path: str = str(APP_DIR / "rag" / "index")
