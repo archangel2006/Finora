@@ -2,7 +2,8 @@
 /*  API SERVICE & RESPONSE PARSER FOR INVESTMENT COPILOT                */
 /* ------------------------------------------------------------------ */
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const RAW_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const BASE_URL = RAW_URL.replace(/\/+$/, "");
 
 // Company name resolution lookup
 const COMPANY_NAMES = {
@@ -21,23 +22,29 @@ const COMPANY_NAMES = {
  * Send an analyst message to the FastAPI backend
  */
 export async function sendAnalystMessage(message, sessionId = "default", memoId = null) {
-  const res = await fetch(`${BASE_URL}/chat/research`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      session_id: sessionId,
-      message,
-      memo_id: memoId,
-    }),
-  });
+  const url = `${BASE_URL}/chat/research`;
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        session_id: sessionId,
+        message,
+        memo_id: memoId,
+      }),
+    });
 
-  if (!res.ok) {
-    const detail = await res.text();
-    console.error("Backend error:", detail);
-    throw new Error(`Request failed (${res.status}). Please try again.`);
+    if (!res.ok) {
+      const detail = await res.text();
+      console.error("Backend response error:", detail);
+      throw new Error(`HTTP ${res.status}: ${detail || res.statusText}`);
+    }
+
+    return await res.json();
+  } catch (err) {
+    console.error("API call failed:", url, err);
+    throw err;
   }
-
-  return res.json();
 }
 
 /**

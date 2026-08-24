@@ -82,10 +82,9 @@ export async function askInto(setFn, text, _key, clearFirst = false) {
   } catch (err) {
     clearInterval(intervalId);
 
-    const errorMessage =
-      err?.message && !err.message.includes("fetch")
-        ? err.message
-        : `Could not reach the research service at ${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}. Please verify backend status and CORS settings.`;
+    const errorMessage = err?.message
+      ? err.message
+      : `Could not reach backend at ${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}. Check network / CORS.`;
 
     setFn((prev) =>
       prev.map((m) =>
