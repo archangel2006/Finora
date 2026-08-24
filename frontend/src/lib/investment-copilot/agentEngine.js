@@ -70,12 +70,12 @@ export async function askInto(setFn, text, _key, clearFirst = false) {
       prev.map((m) =>
         m.id === agentId
           ? {
-              ...m,
-              loading: false,
-              completedTrace,
-              output,
-              error: null,
-            }
+            ...m,
+            loading: false,
+            completedTrace,
+            output,
+            error: null,
+          }
           : m
       )
     );
@@ -85,7 +85,7 @@ export async function askInto(setFn, text, _key, clearFirst = false) {
     const errorMessage =
       err?.message && !err.message.includes("fetch")
         ? err.message
-        : "Could not reach the research service. Please verify backend is running on http://localhost:8000.";
+        : `Could not reach the research service at ${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}. Please verify backend status and CORS settings.`;
 
     setFn((prev) =>
       prev.map((m) =>
@@ -99,7 +99,7 @@ export async function askInto(setFn, text, _key, clearFirst = false) {
 
 /* Legacy stubs preserved for call-site compatibility */
 export function buildResponse() { return {}; }
-export function stepTraceGeneric() {}
-export function askMemoFollowUp() {}
-export function askManagerFollowUp() {}
-export function memoFreeAskInto() {}
+export function stepTraceGeneric() { }
+export function askMemoFollowUp() { }
+export function askManagerFollowUp() { }
+export function memoFreeAskInto() { }
