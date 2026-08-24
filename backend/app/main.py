@@ -7,10 +7,12 @@ from app.api import routes_chat
 
 app = FastAPI(title="Investment Committee Copilot API")
 
+is_wildcard = "*" in settings.cors_origins
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origins,
-    allow_credentials=True,
+    allow_credentials=not is_wildcard,
     allow_methods=["*"],
     allow_headers=["*"],
 )
