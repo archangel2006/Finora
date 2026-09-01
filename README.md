@@ -138,6 +138,8 @@ This architecture separates the agent runtime from the evidence layer and the re
 
 > Memo generation is the one exception worth noting: the LLM only provides the analytical fields such as thesis, confidence, summary, and risk framing. Every number in the memo, including market data and comparison values, is assembled separately from tool output and never passed through the model.
 
+<img width="1448" height="1086" alt="ChatGPT Image Aug 11, 2026, 11_51_53 PM" src="https://github.com/user-attachments/assets/1f3f9750-285b-424b-b05e-fbfc235c625d" />
+
 ---
 
 ## Design Decisions
